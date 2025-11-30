@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>GeekHaven Shop - Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+
+<body>
+
+  <!-- mesmo header que o index, apenas troca classe active -->
+
+<header class="gh-header">
+  <a class="gh-logo" href="index.html">
+    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <span class="logo-text">GeekHaven Shop</span>
+  </a>
+
+  <nav class="gh-nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="products.html">Produtos</a></li>
+      <li><a href="cart.html">Carrinho</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="accessibility-controls">
+    <label for="color-mode" class="sr-only">Modo de cor</label>
+    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
+      <option value="default">Padrão</option>
+      <option value="light">Fundo claro</option>
+      <option value="desaturated">Modo dessaturado</option>
+      <option value="colorblind">Modo daltônico</option>
+    </select>
+  </div>
+</header>
+
+  <main class="page-transition reveal">
+    <header class="section-header">
+      <h1>Catálogo GeekHaven</h1>
+      <form class="filters" aria-label="Filtros de produtos">
+        <label for="search">Buscar</label>
+        <input id="search" name="search" type="search" placeholder="Digite o nome do produto" />
+        <label for="category">Categoria</label>
+        <select id="category" name="category">
+          <option value="">Todas</option>
+          <option value="perifericos">Periféricos</option>
+          <option value="colecionaveis">Colecionáveis</option>
+          <option value="cartas">Cartas</option>
+        </select>
+      </form>
+    </header>
+
+    <div class="product-grid">
+      <!-- Reutilizar cards, podem ser links para product.html -->
+      <article class="product-card">
+        <a href="product.html" class="product-link">
+          <img src="https://via.placeholder.com/300x200"
+               alt="Mouse gamer preto com detalhes em roxo neon" />
+          <div class="product-info">
+            <h2>Mouse Gamer PixelStrike</h2>
+            <p class="product-category">Periférico</p>
+            <p class="product-price">R$ 179,90</p>
+          </div>
+        </a>
+      </article>
+
+      <!-- adicionar mais produtos similares -->
+    </div>
+  </main class="page-transition reveal">
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

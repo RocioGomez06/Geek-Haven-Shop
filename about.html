@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>GeekHaven Shop - Sobre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="gh-header">
+  <a class="gh-logo" href="index.html">
+    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <span class="logo-text">GeekHaven Shop</span>
+  </a>
+
+  <nav class="gh-nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="products.html">Produtos</a></li>
+      <li><a href="cart.html">Carrinho</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="accessibility-controls">
+    <label for="color-mode" class="sr-only">Modo de cor</label>
+    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
+      <option value="default">Padrão</option>
+      <option value="light">Fundo claro</option>
+      <option value="desaturated">Modo dessaturado</option>
+      <option value="colorblind">Modo daltônico</option>
+    </select>
+  </div>
+</header>
+
+  <main class="page-transition reveal">
+    <h1>Sobre a GeekHaven Shop</h1>
+    <p>
+      A GeekHaven Shop é uma loja real com uma página web fictícia criada como projeto de Interface Humano-Computador,
+      com foco em acessibilidade, usabilidade e experiência para pessoas geeks e gamers.
+    </p>
+
+    <section aria-labelledby="accessibility-section-title">
+      <h2 id="accessibility-section-title">Compromisso com acessibilidade</h2>
+      <ul class="bullet-list">
+        <li>Uso de contraste elevado entre texto e fundo.</li>
+        <li>Textos alternativos em imagens importantes.</li>
+        <li>Links e botões com rótulos claros e descritivos.</li>
+        <li>Navegação consistente em todas as páginas.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">Contato</h2>
+      <form class="contact-form">
+        <label for="name">Nome</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit" class="btn btn-primary">Enviar (protótipo)</button>
+      </form>
+    </section>
+  </main class="page-transition reveal">
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

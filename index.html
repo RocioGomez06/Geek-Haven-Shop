@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>GeekHaven Shop - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="gh-header">
+  <a class="gh-logo" href="index.html">
+    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <span class="logo-text">GeekHaven Shop</span>
+  </a>
+
+  <nav class="gh-nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="products.html">Produtos</a></li>
+      <li><a href="cart.html">Carrinho</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="accessibility-controls">
+    <label for="color-mode" class="sr-only">Modo de cor</label>
+    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
+      <option value="default">Padrão</option>
+      <option value="light">Fundo claro</option>
+      <option value="desaturated">Modo dessaturado</option>
+      <option value="colorblind">Modo daltônico</option>
+    </select>
+  </div>
+</header>
+
+  <main class="page-transition reveal">
+    <!-- Seção Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Seu loot gamer está aqui.</h1>
+        <p>Periféricos RGB, colecionáveis, cartas e muito mais para geeks e gamers.</p>
+        <a href="products.html" class="btn btn-primary">Explorar produtos</a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <div class="hero-card">
+          <p class="hero-tag">Setup Mode: ON</p>
+          <p>Teclados mecânicos, headsets, mousepads gigantes e LEDs pra iluminar seu quarto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção destaques -->
+    <section class="section" aria-labelledby="featured-title">
+      <div class="section-header">
+        <h2 id="featured-title">Destaques da semana</h2>
+        <a href="products.html" class="link-inline">Ver catálogo completo</a>
+      </div>
+
+      <div class="product-grid">
+        <!-- Card 1 -->
+        <article class="product-card">
+          <img src="https://via.placeholder.com/300x200"
+               alt="Teclado mecânico RGB com iluminação em arco-íris" />
+          <div class="product-info">
+            <h3>Teclado Mecânico RGB</h3>
+            <p class="product-category">Periférico</p>
+            <p class="product-price">R$ 399,90</p>
+            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card">
+          <img src="https://via.placeholder.com/300x200"
+               alt="Headset gamer preto com detalhes em verde neon" />
+          <div class="product-info">
+            <h3>Headset Gamer Neon</h3>
+            <p class="product-category">Áudio</p>
+            <p class="product-price">R$ 249,90</p>
+            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card">
+          <img src="https://via.placeholder.com/300x200"
+               alt="Action figure estilizado de personagem de fantasia segurando espada" />
+          <div class="product-info">
+            <h3>Figure Hero Fantasy</h3>
+            <p class="product-category">Colecionável</p>
+            <p class="product-price">R$ 199,90</p>
+            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main class="page-transition reveal">
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop — Loot para geeks e gamers.</p>
+    <a href="about.html">Acessibilidade &amp; Contato</a>
+  </footer>
+
+  <script src="script.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

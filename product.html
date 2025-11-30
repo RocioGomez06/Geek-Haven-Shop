@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>GeekHaven Shop - Detalhe do Produto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="gh-header">
+  <a class="gh-logo" href="index.html">
+    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <span class="logo-text">GeekHaven Shop</span>
+  </a>
+
+  <nav class="gh-nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="products.html">Produtos</a></li>
+      <li><a href="cart.html">Carrinho</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="accessibility-controls">
+    <label for="color-mode" class="sr-only">Modo de cor</label>
+    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
+      <option value="default">Padrão</option>
+      <option value="light">Fundo claro</option>
+      <option value="desaturated">Modo dessaturado</option>
+      <option value="colorblind">Modo daltônico</option>
+    </select>
+  </div>
+</header>
+
+  <main class="page-transition reveal">
+    <article class="product-detail">
+      <div class="product-detail-media">
+        <img src="https://via.placeholder.com/500x350"
+             alt="Teclado mecânico RGB com teclas em destaque roxo e verde neon" />
+      </div>
+
+      <div class="product-detail-info">
+        <h1>Teclado Mecânico RGB GeekGlow</h1>
+        <p class="product-price">R$ 399,90</p>
+        <p class="product-description">
+          Teclado mecânico com switches táteis, iluminação RGB com múltiplos efeitos,
+          ideal para longas sessões de games e digitação confortável.
+        </p>
+
+        <form class="add-to-cart" aria-label="Adicionar produto ao carrinho">
+          <label for="quantity">Quantidade</label>
+          <input id="quantity" name="quantity" type="number" min="1" value="1" />
+          <button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
+        </form>
+
+        <p class="helper-text">
+          Dica: confira a quantidade antes de adicionar para evitar erros na compra.
+        </p>
+
+        <div class="product-meta">
+          <p><strong>Categoria:</strong> Periféricos</p>
+          <p><strong>Disponibilidade:</strong> Em estoque</p>
+        </div>
+      </div>
+    </article>
+
+    <section class="section" aria-labelledby="accessibility-title">
+      <h2 id="accessibility-title">Por que este produto é acessível?</h2>
+      <ul class="bullet-list">
+        <li>Imagem com texto alternativo descritivo.</li>
+        <li>Campos de formulário com rótulos visíveis.</li>
+        <li>Botões com texto claro: “Adicionar ao carrinho”.</li>
+      </ul>
+    </section>
+  </main class="page-transition reveal">
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

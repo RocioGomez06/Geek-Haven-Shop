@@ -1,0 +1,620 @@
+:root {
+  --bg-color: #050510;
+  --bg-elevated: #101020;
+  --accent: #8b5cf6;   /* roxo neon */
+  --accent-soft: #4ade80; /* verde suave */
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-subtle: #27272f;
+  --danger: #ef4444;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --spacing: 1.5rem;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-main);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Acessibilidade extra: classe só para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+/* Header */
+
+.gh-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem var(--spacing);
+  background: linear-gradient(90deg, #020617, #111827);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.gh-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+}
+
+.gh-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.gh-nav a {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.gh-nav a,
+.btn,
+.product-card,
+.hero-card {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.gh-nav a.active,
+.gh-nav a:hover {
+  background-color: var(--accent);
+}
+
+/* Layout geral */
+
+.section {
+  padding: 2rem var(--spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h1,
+.section-header h2 {
+  margin: 0;
+}
+
+.link-inline {
+  font-size: 0.95rem;
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 3rem var(--spacing);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero-content p {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: 10%;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.6), transparent);
+  filter: blur(20px);
+  opacity: 0.8;
+}
+
+.hero-card {
+  position: relative;
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-tag {
+  font-size: 0.85rem;
+  color: var(--accent-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+}
+
+/* Botões */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #6d28d9;
+}
+
+.btn-secondary {
+  background-color: #1e293b;
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background-color: #111827;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Cards de produto */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.product-info h3,
+.product-info h2 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1rem;
+}
+
+.product-category {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.product-price {
+  font-weight: 700;
+  margin: 0.5rem 0 0.75rem 0;
+}
+
+/* Link que envolve o card inteiro (products.html) */
+
+.product-link {
+  display: block;
+  color: inherit;
+}
+
+/* Texto auxiliar */
+
+.helper-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Formulários e filtros */
+
+.filters,
+.add-to-cart,
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+input,
+select,
+textarea {
+  background-color: #020617;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: 0.45rem 0.6rem;
+  color: var(--text-main);
+  font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Detalhe do produto */
+
+.product-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 2rem;
+}
+
+.product-detail-media {
+  background-color: #020617;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+}
+
+.product-detail-info h1 {
+  margin-top: 0;
+}
+
+/* Carrinho */
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.cart-table th {
+  background-color: #020617;
+}
+
+.cart-summary {
+  margin-top: 1.5rem;
+}
+
+/* Listas */
+
+.bullet-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+}
+
+/* Footer */
+
+.gh-footer {
+  padding: 1.5rem var(--spacing);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Responsividade básica */
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .gh-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .section {
+    padding-inline: 1rem;
+  }
+
+  .gh-footer {
+    padding-inline: 1rem;
+  }
+}
+
+.accessibility-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.accessibility-controls select {
+  background-color: #020617;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+/* Ajuste para mobile: que no quede apretado */
+@media (max-width: 768px) {
+  .accessibility-controls {
+    margin-top: 0.5rem;
+  }
+}
+
+/*que chota le paso al de alto contraste???*/
+
+
+/* Tema dessaturado – ajuda quem tem daltonismo diminuindo “poluição” de cores */
+body.theme-desaturated {
+  --bg-color: #050509;        /* quase preto neutro */
+  --bg-elevated: #111119;     /* cinza escuro */
+  --accent: #9ca3af;          /* cinza forte */
+  --accent-soft: #e5e7eb;     /* cinza quase branco */
+  --text-main: #f9fafb;       /* texto principal bem claro */
+  --text-muted: #9ca3af;      /* texto secundário cinza */
+  --border-subtle: #4b5563;   /* borda cinza média */
+}
+
+/* Tema com fundo claro – para quem tem dificuldade com temas escuros */
+body.theme-light {
+  --bg-color: #e5e7eb;      /* cinza bem clarinho em vez de branco puro */
+  --bg-elevated: #ffffff;   /* cartões ainda brancos */
+  --accent: #6366f1;        /* roxo/azul mais suave */
+  --accent-soft: #16a34a;   /* verde para detalhes, sem exagerar */
+  --text-main: #111827;     /* quase preto, ótimo contraste */
+  --text-muted: #4b5563;    /* cinza médio para textos secundários */
+  --border-subtle: #d1d5db; /* bordas discretas */
+}
+
+/* Em fundo claro, títulos usam texto normal, não a cor de acento */
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3 {
+  color: var(--text-main);
+}
+
+body.theme-light .hero-card {
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18); /* sombra mais discreta */
+}
+
+/* ============================= */
+/*  AJUSTES PARA TEMA FUNDO CLARO */
+/* ============================= */
+
+/* Header claro no tema claro */
+body.theme-light .gh-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #d1d5db !important;
+}
+
+/* Links do menu visíveis no tema claro */
+body.theme-light .gh-nav a {
+  color: #111827 !important;          /* texto escuro, legível */
+  background: transparent !important; /* sem pill escuro por padrão */
+}
+
+/* Link ativo/hover com pill roxo e texto branco */
+body.theme-light .gh-nav a.active,
+body.theme-light .gh-nav a:hover {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+/* Logo visível no tema claro */
+body.theme-light .gh-logo {
+  color: #111827 !important;
+}
+
+/* Ajustes específicos para tema de alto contraste 
+body.theme-high-contrast .btn-primary {
+  color: #101020;
+}
+
+body.theme-high-contrast .gh-nav a.active,
+body.theme-high-contrast .gh-nav a:hover {
+  color: #121223;
+}*/
+
+/* Ajustes específicos para tema com fundo claro */
+body.theme-light .btn-secondary {
+  color: #fff;
+}
+
+body.theme-light .gh-nav a.active,
+body.theme-light .gh-nav a:hover {
+  color: #fff;
+}
+
+/*dale chatgpt no se ve una chota en fondo claro*/
+
+/*no se preocupe minegro enseguida lo arreglamo*/
+/* SELECTOR DE MODO DE COR – AJUSTES POR TEMA */
+
+/* Fundo claro: pill clarito, texto escuro legible */
+body.theme-light .accessibility-controls select {
+  background-color: #ffffff;
+  color: #0f1420;
+  border-color: #4f46e5;
+}
+
+/* Tema daltônico – paleta pensada para daltonismo vermelho-verde
+   usa principalmente ciano, azul e amarelo, com alto contraste */
+body.theme-colorblind {
+  --bg-color: #0b1020;        /* azul bem escuro */
+  --bg-elevated: #141927;     /* azul escuro levemente mais claro */
+  --accent: #22d3ee;          /* ciano vivo para botões/links */
+  --accent-soft: #fbbf24;     /* amarelo forte para detalhes */
+  --text-main: #f9fafb;       /* texto principal branco */
+  --text-muted: #cbd5f5;      /* azul clarinho para textos secundários */
+  --border-subtle: #1f2937;   /* borda azul escura */
+}
+
+/* Botões em modo daltônico */
+body.theme-colorblind .btn-primary,
+body.theme-colorblind .btn-primary:hover {
+  background-color: #22d3ee;
+  color: #0b1020;
+}
+
+body.theme-colorblind .btn-secondary,
+body.theme-colorblind .btn-secondary:hover {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+/* Menu ativo/hover em modo daltônico */
+body.theme-colorblind .gh-nav a.active,
+body.theme-colorblind .gh-nav a:hover {
+  background-color: #fbbf24;
+  color: #0b1020;
+}
+
+/* Inputs mais claros no tema "Fundo claro" */
+body.theme-light input,
+body.theme-light select,
+body.theme-light textarea {
+  background-color: #f9fafb;   /* casi blanco */
+  color: #111827;              /* texto oscuro legible */
+  border-color: #d1d5db;       /* borda clara */
+}
+
+/* Placeholder mais suave no tema claro (opcional) */
+body.theme-light input::placeholder,
+body.theme-light textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Hover suave nos cards de produto */
+.product-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+}
+
+/* Glow do hero "respirando" */
+.hero-glow {
+  animation: heroGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+/* Elementos que "entram" quando aparecem na tela */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+/* Se o usuário preferir reduzir animações, respeitamos! */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

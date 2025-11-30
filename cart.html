@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>GeekHaven Shop - Carrinho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="gh-header">
+  <a class="gh-logo" href="index.html">
+    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <span class="logo-text">GeekHaven Shop</span>
+  </a>
+
+  <nav class="gh-nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="products.html">Produtos</a></li>
+      <li><a href="cart.html">Carrinho</a></li>
+      <li><a href="about.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="accessibility-controls">
+    <label for="color-mode" class="sr-only">Modo de cor</label>
+    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
+      <option value="default">Padrão</option>
+      <option value="light">Fundo claro</option>
+      <option value="desaturated">Modo dessaturado</option>
+      <option value="colorblind">Modo daltônico</option>
+    </select>
+  </div>
+</header>
+
+  <main class="page-transition reveal">
+    <h1>Seu carrinho</h1>
+
+    <table class="cart-table">
+      <caption class="sr-only">Itens do carrinho</caption>
+      <thead>
+        <tr>
+          <th scope="col">Produto</th>
+          <th scope="col">Qtd.</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Teclado Mecânico RGB GeekGlow</td>
+          <td>1</td>
+          <td>R$ 399,90</td>
+          <td>R$ 399,90</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p><strong>Total:</strong> R$ 399,90</p>
+      <button class="btn btn-primary" type="button" disabled>
+        Finalizar compra (desabilitado - protótipo)
+      </button>
+      <p class="helper-text">
+        Este é um protótipo de interface. O botão está desabilitado para prevenir ações reais.
+      </p>
+    </div>
+  </main class="page-transition reveal">
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>
