@@ -4,15 +4,39 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>GeekHaven Shop - Home</title>
+  <title>GeekHaven Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica o tema salvo ANTES do CSS para evitar flicker -->
+  <script>
+    (function () {
+      var THEMES = ['default', 'light', 'desaturated', 'colorblind'];
+      try {
+        var saved = localStorage.getItem('gh-color-mode');
+        var theme = THEMES.indexOf(saved) !== -1 ? saved : 'default';
+        document.documentElement.classList.add('theme-' + theme);
+      } catch (e) {
+        document.documentElement.classList.add('theme-default');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
 <body>
 
   <header class="gh-header">
   <a class="gh-logo" href="index.html">
-    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <img
+      src="img/logo.png"
+      alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
+      class="gh-logo-img"
+    />
     <span class="logo-text">GeekHaven Shop</span>
   </a>
 
@@ -25,16 +49,15 @@
     </ul>
   </nav>
 
-  <div class="accessibility-controls">
-    <label for="color-mode" class="sr-only">Modo de cor</label>
-    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
-      <option value="default">Padrão</option>
-      <option value="light">Fundo claro</option>
-      <option value="desaturated">Modo dessaturado</option>
-      <option value="colorblind">Modo daltônico</option>
-    </select>
+  <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
+    <span class="accessibility-label">🎨 Tema:</span>
+    <button class="theme-btn" data-theme="default">Padrão</button>
+    <button class="theme-btn" data-theme="light">Claro</button>
+    <button class="theme-btn" data-theme="desaturated">Sem cor</button>
+    <button class="theme-btn" data-theme="colorblind">Daltônico</button>
   </div>
 </header>
+
 
   <main class="page-transition reveal">
     <!-- Seção Hero -->
@@ -51,8 +74,8 @@
           <p>Teclados mecânicos, headsets, mousepads gigantes e LEDs pra iluminar seu quarto.</p>
         </div>
       </div>
-    </section>
-
+    </section> <!-- fim destaques -->
+  </main>
     <!-- Seção destaques -->
     <section class="section" aria-labelledby="featured-title">
       <div class="section-header">
@@ -61,51 +84,63 @@
       </div>
 
       <div class="product-grid">
-        <!-- Card 1 -->
-        <article class="product-card">
-          <img src="https://via.placeholder.com/300x200"
-               alt="Teclado mecânico RGB com iluminação em arco-íris" />
-          <div class="product-info">
-            <h3>Teclado Mecânico RGB</h3>
-            <p class="product-category">Periférico</p>
-            <p class="product-price">R$ 399,90</p>
-            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
-          </div>
-        </article>
+  <!-- Teclado Redragon -->
+  <article class="product-card">
+    <img
+      src="productos/teclado-redragon-bluetooth-fizz-pro-K616-rgb-white-pink-esp.jpg"
+      alt="Teclado mecânico gamer Redragon Fizz Pro K616 branco e rosa com iluminação RGB."
+    />
+    <div class="product-info">
+      <h3>Teclado Redragon Fizz Pro K616</h3>
+      <p class="product-category">Periférico</p>
+      <p class="product-price">R$ 429,90</p>
+      <a href="products.html" class="btn btn-secondary">Ver detalhes</a>
+    </div>
+  </article>
 
-        <!-- Card 2 -->
-        <article class="product-card">
-          <img src="https://via.placeholder.com/300x200"
-               alt="Headset gamer preto com detalhes em verde neon" />
-          <div class="product-info">
-            <h3>Headset Gamer Neon</h3>
-            <p class="product-category">Áudio</p>
-            <p class="product-price">R$ 249,90</p>
-            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
-          </div>
-        </article>
+  <!-- Headphone YOWU -->
+  <article class="product-card">
+    <img
+      src="productos/YOWU-CE-headphone-bluetooth-pink-black.jpg"
+      alt="Headphone Bluetooth YOWU CE preto e rosa com orelhas de gatinho iluminadas."
+    />
+    <div class="product-info">
+      <h3>Headphone YOWU CE</h3>
+      <p class="product-category">Periférico</p>
+      <p class="product-price">R$ 599,90</p>
+      <a href="products.html" class="btn btn-secondary">Ver detalhes</a>
+    </div>
+  </article>
 
-        <!-- Card 3 -->
-        <article class="product-card">
-          <img src="https://via.placeholder.com/300x200"
-               alt="Action figure estilizado de personagem de fantasia segurando espada" />
-          <div class="product-info">
-            <h3>Figure Hero Fantasy</h3>
-            <p class="product-category">Colecionável</p>
-            <p class="product-price">R$ 199,90</p>
-            <a href="product.html" class="btn btn-secondary">Ver detalhes</a>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main class="page-transition reveal">
+  <!-- Pelúcia Snorlax -->
+  <article class="product-card">
+    <img
+      src="productos/peluche-gigante-snorlax.jpg"
+      alt="Pelúcia gigante do Pokémon Snorlax deitado."
+    />
+    <div class="product-info">
+      <h3>Pelúcia Gigante Snorlax</h3>
+      <p class="product-category">Colecionável</p>
+      <p class="product-price">R$ 349,90</p>
+      <a href="products.html" class="btn btn-secondary">Ver detalhes</a>
+    </div>
+  </article>
+</div>
+
+  <button 
+    class="floating-cart" 
+    type="button"
+    aria-label="Abrir carrinho de compras"
+    onclick="window.location.href='cart.html'">
+    <span class="cart-icon">🛒</span>
+    <span class="cart-count" aria-hidden="true">0</span>
+  </button>
 
   <footer class="gh-footer">
     <p>© 2025 GeekHaven Shop — Loot para geeks e gamers.</p>
     <a href="about.html">Acessibilidade &amp; Contato</a>
   </footer>
 
-  <script src="script.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

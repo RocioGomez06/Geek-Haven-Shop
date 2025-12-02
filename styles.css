@@ -66,17 +66,36 @@ a:hover {
   border-bottom: 1px solid var(--border-subtle);
 }
 
+/* Contenedor del logo */
 .gh-logo {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-main);
+  gap: 0.6rem;
+  text-decoration: none;
+  }
+
+.gh-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
 }
 
 .logo-icon {
   font-size: 1.5rem;
+}
+
+/* Texto estilo pixel */
+.logo-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  color: var(--accent-soft); /* verde gamer que vos usás */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Tema claro: que no quede verde chill */
+body.theme-light .logo-text {
+  color: #111827; /* casi negro, combina con el header claro */
 }
 
 .gh-nav ul {
@@ -238,17 +257,34 @@ a:hover {
 }
 
 .product-card {
-  background-color: var(--bg-elevated);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
+  background: var(--card-bg, #ffffff0d); /* fallback transparente leve */
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08); /* neutro en modo oscuro */
+  padding: 0;
+  box-shadow: 
+    0 1px 3px rgba(0,0,0,0.22),
+    0 2px 6px rgba(0,0,0,0.18); /* elevación muy visible */
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .product-card img {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: 250px;
+  object-fit: contain;
+  background: #0d0d17;
+  padding: 8px;
+  border-radius: 12px 12px 0 0;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.28),
+    0 6px 16px rgba(0,0,0,0.22);
+}
+
+:root.theme-light .product-card {
+  border: 1px solid rgba(0,0,0,0.12);
 }
 
 .product-info {
@@ -287,11 +323,18 @@ a:hover {
 
 /* Formulários e filtros */
 
-.filters,
 .add-to-cart,
 .contact-form {
   display: grid;
   gap: 0.75rem;
+}
+
+/* Contenedor de filtros (buscar + categoría) */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;        /* espacio entre label/input y label/select */
+  margin-bottom: 2rem; /* espacio hacia la grid de productos */
 }
 
 input,
@@ -618,3 +661,200 @@ body.theme-light textarea::placeholder {
     scroll-behavior: auto !important;
   }
 }
+
+/* Main com um pouco de respiro em todas as páginas */
+.page-main {
+  padding: 2rem 0;
+}
+
+/* Deixar o conteúdo mais estreito e centralizado */
+.section-narrow {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Grid de produtos mais estreita e centralizada */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Campos del formulario más bonitos */
+.contact-form {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+  max-width: 600px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-elevated);
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.form-field textarea {
+  resize: vertical; /* evita deformar toda la página */
+}
+
+/* Botón más pequeño y centrado */
+.contact-submit {
+  width: fit-content;
+  padding: 0.6rem 1.4rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  display: block;
+  margin-left: auto;  /* alinea a la derecha */
+  margin-right: 0;
+}
+
+/* Painel acessível de temas */
+.accessibility-panel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--bg-elevated);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.accessibility-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent-soft);
+}
+
+.theme-btn {
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-color);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  transition: 0.2s ease;
+}
+
+.theme-btn:hover,
+.theme-btn:focus {
+  outline: none;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.theme-btn.active {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* --------------------------
+   BOTÃO FLOTANTE DO CARRINHO
+   -------------------------- */
+
+.floating-cart {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 9999;
+
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.9rem 1.2rem;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.floating-cart:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* Icono */
+.cart-icon {
+  font-size: 1.3rem;
+}
+
+/* Contador */
+.floating-cart .cart-count {
+  background: #fff;
+  color: var(--accent);
+  font-weight: 900;
+
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Modo claro */
+:root.theme-light .floating-cart {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Modo desaturado */
+:root.theme-desaturated .floating-cart {
+  background: #9ca3af;
+  color: #111;
+}
+
+/* Modo daltônico */
+:root.theme-colorblind .floating-cart {
+  background: #22d3ee;
+  color: #111;
+}
+
+@media (max-width: 768px) {
+  .floating-cart {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .cart-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* Animación de "shake" del botón del carrinho */
+@keyframes cartShake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-2px); }
+  40%  { transform: translateX(2px); }
+  60%  { transform: translateX(-2px); }
+  80%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.floating-cart.shake {
+  animation: cartShake 0.35s ease;
+}
+

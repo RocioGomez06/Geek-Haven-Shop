@@ -4,15 +4,52 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>GeekHaven Shop - Sobre</title>
+  <title>GeekHaven Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica o tema salvo ANTES do CSS para evitar flicker -->
+  <script>
+    (function () {
+      var THEMES = ['default', 'light', 'desaturated', 'colorblind'];
+      try {
+        var saved = localStorage.getItem('gh-color-mode');
+        var theme = THEMES.indexOf(saved) !== -1 ? saved : 'default';
+        document.documentElement.classList.add('theme-' + theme);
+      } catch (e) {
+        document.documentElement.classList.add('theme-default');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
+<div id="cart-live-region" class="sr-only" aria-live="polite"></div>
+
+<button 
+  class="floating-cart" 
+  type="button"
+  aria-label="Abrir carrinho"
+  onclick="window.location.href='cart.html'">
+  
+  <span class="cart-icon">🛒</span>
+  <span class="cart-count">0</span>
+</button>
+
+
 <body>
 
   <header class="gh-header">
   <a class="gh-logo" href="index.html">
-    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <img
+      src="img/logo.png"
+      alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
+      class="gh-logo-img"
+    />
     <span class="logo-text">GeekHaven Shop</span>
   </a>
 
@@ -25,50 +62,69 @@
     </ul>
   </nav>
 
-  <div class="accessibility-controls">
-    <label for="color-mode" class="sr-only">Modo de cor</label>
-    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
-      <option value="default">Padrão</option>
-      <option value="light">Fundo claro</option>
-      <option value="desaturated">Modo dessaturado</option>
-      <option value="colorblind">Modo daltônico</option>
-    </select>
+  <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
+    <span class="accessibility-label">🎨 Tema:</span>
+
+    <button class="theme-btn" data-theme="default">Padrão</button>
+    <button class="theme-btn" data-theme="light">Claro</button>
+    <button class="theme-btn" data-theme="desaturated">Sem cor</button>
+    <button class="theme-btn" data-theme="colorblind">Daltônico</button>
   </div>
 </header>
 
-  <main class="page-transition reveal">
-    <h1>Sobre a GeekHaven Shop</h1>
-    <p>
-      A GeekHaven Shop é uma loja real com uma página web fictícia criada como projeto de Interface Humano-Computador,
-      com foco em acessibilidade, usabilidade e experiência para pessoas geeks e gamers.
-    </p>
+<main class="page-main page-transition reveal">
+  <section class="section section-narrow">
+    <header class="about-header">
+      <h1>Sobre a GeekHaven Shop</h1>
+      <p>
+        A GeekHaven Shop é uma loja real com uma página web fictícia criada como
+        projeto de Interface Humano-Computador, com foco em acessibilidade,
+        usabilidade e uma boa experiência para pessoas geeks e gamers.
+      </p>
+    </header>
 
-    <section aria-labelledby="accessibility-section-title">
-      <h2 id="accessibility-section-title">Compromisso com acessibilidade</h2>
+    <section class="about-block" aria-labelledby="access-title">
+      <h2 id="access-title">Compromisso com acessibilidade</h2>
       <ul class="bullet-list">
         <li>Uso de contraste elevado entre texto e fundo.</li>
         <li>Textos alternativos em imagens importantes.</li>
         <li>Links e botões com rótulos claros e descritivos.</li>
         <li>Navegação consistente em todas as páginas.</li>
+        <li>Opções de temas de cor para diferentes necessidades visuais.</li>
       </ul>
     </section>
 
-    <section aria-labelledby="contact-title">
+    <section class="about-block" aria-labelledby="contact-title">
       <h2 id="contact-title">Contato</h2>
+      <p class="helper-text">
+        Este formulário é apenas ilustrativo (protótipo). Os campos foram
+        estruturados para serem claros e acessíveis para leitores de tela.
+      </p>
+
       <form class="contact-form">
-        <label for="name">Nome</label>
-        <input id="name" name="name" type="text" required />
+        <div class="form-field">
+          <label for="contact-name">Nome</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" />
+        </div>
 
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" required />
+        <div class="form-field">
+          <label for="contact-email">E-mail</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" />
+        </div>
 
-        <label for="message">Mensagem</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <div class="form-field">
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" rows="4"></textarea>
+        </div>
 
-        <button type="submit" class="btn btn-primary">Enviar (protótipo)</button>
+        <button type="button" class="btn btn-primary contact-submit">
+          Enviar
+        </button>
       </form>
+
     </section>
-  </main class="page-transition reveal">
+  </section>
+</main>
 
   <footer class="gh-footer">
     <p>© 2025 GeekHaven Shop</p>

@@ -4,15 +4,52 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>GeekHaven Shop - Carrinho</title>
+  <title>GeekHaven Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica o tema salvo ANTES do CSS para evitar flicker -->
+  <script>
+    (function () {
+      var THEMES = ['default', 'light', 'desaturated', 'colorblind'];
+      try {
+        var saved = localStorage.getItem('gh-color-mode');
+        var theme = THEMES.indexOf(saved) !== -1 ? saved : 'default';
+        document.documentElement.classList.add('theme-' + theme);
+      } catch (e) {
+        document.documentElement.classList.add('theme-default');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
+<div id="cart-live-region" class="sr-only" aria-live="polite"></div>
+
+<button 
+  class="floating-cart" 
+  type="button"
+  aria-label="Abrir carrinho"
+  onclick="window.location.href='cart.html'">
+  
+  <span class="cart-icon">🛒</span>
+  <span class="cart-count">0</span>
+</button>
+
+
 <body>
 
   <header class="gh-header">
   <a class="gh-logo" href="index.html">
-    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <img
+      src="img/logo.png"
+      alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
+      class="gh-logo-img"
+    />
     <span class="logo-text">GeekHaven Shop</span>
   </a>
 
@@ -25,54 +62,60 @@
     </ul>
   </nav>
 
-  <div class="accessibility-controls">
-    <label for="color-mode" class="sr-only">Modo de cor</label>
-    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
-      <option value="default">Padrão</option>
-      <option value="light">Fundo claro</option>
-      <option value="desaturated">Modo dessaturado</option>
-      <option value="colorblind">Modo daltônico</option>
-    </select>
+  <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
+    <span class="accessibility-label">🎨 Tema:</span>
+    <button class="theme-btn" data-theme="default">Padrão</button>
+    <button class="theme-btn" data-theme="light">Claro</button>
+    <button class="theme-btn" data-theme="desaturated">Sem cor</button>
+    <button class="theme-btn" data-theme="colorblind">Daltônico</button>
   </div>
 </header>
 
-  <main class="page-transition reveal">
-    <h1>Seu carrinho</h1>
-
-    <table class="cart-table">
-      <caption class="sr-only">Itens do carrinho</caption>
-      <thead>
-        <tr>
-          <th scope="col">Produto</th>
-          <th scope="col">Qtd.</th>
-          <th scope="col">Preço</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Teclado Mecânico RGB GeekGlow</td>
-          <td>1</td>
-          <td>R$ 399,90</td>
-          <td>R$ 399,90</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="cart-summary">
-      <p><strong>Total:</strong> R$ 399,90</p>
-      <button class="btn btn-primary" type="button" disabled>
-        Finalizar compra (desabilitado - protótipo)
-      </button>
+  <main class="page-main page-transition reveal">
+    <section class="section section-narrow" aria-labelledby="cart-title">
+      <h1 id="cart-title">Seu carrinho</h1>
       <p class="helper-text">
-        Este é um protótipo de interface. O botão está desabilitado para prevenir ações reais.
+        Revise os produtos escolhidos, ajuste as quantidades ou remova itens antes de finalizar a compra.
       </p>
-    </div>
-  </main class="page-transition reveal">
 
-  <footer class="gh-footer">
-    <p>© 2025 GeekHaven Shop</p>
-  </footer>
-<script src="script.js"></script>
+      <p id="cart-empty">Seu carrinho está vazio no momento.</p>
+
+      <div id="cart-summary" style="display:none;">
+        <table class="cart-table" aria-describedby="cart-title">
+          <thead>
+            <tr>
+              <th scope="col">Produto</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items"></tbody>
+        </table>
+
+        <div class="cart-summary">
+          <p><strong>Total:</strong> <span id="cart-total">R$ 0,00</span></p>
+          <button type="button" class="btn btn-primary">
+            Finalizar compra
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Región aria-live + botón flotante -->
+  <div id="cart-live-region" class="sr-only" aria-live="polite"></div>
+
+  <button
+    class="floating-cart"
+    type="button"
+    aria-label="Abrir carrinho de compras"
+    onclick="window.location.href='cart.html'">
+    🛒
+    <span class="cart-count" aria-hidden="true">0</span>
+  </button>
+
+  <script src="script.js"></script>
 </body>
 </html>

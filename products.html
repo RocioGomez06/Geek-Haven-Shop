@@ -4,10 +4,41 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>GeekHaven Shop - Produtos</title>
+  <title>GeekHaven Shop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Aplica o tema salvo ANTES do CSS para evitar flicker -->
+  <script>
+    (function () {
+      var THEMES = ['default', 'light', 'desaturated', 'colorblind'];
+      try {
+        var saved = localStorage.getItem('gh-color-mode');
+        var theme = THEMES.indexOf(saved) !== -1 ? saved : 'default';
+        document.documentElement.classList.add('theme-' + theme);
+      } catch (e) {
+        document.documentElement.classList.add('theme-default');
+      }
+    })();
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
+<div id="cart-live-region" class="sr-only" aria-live="polite"></div>
+
+<button 
+  class="floating-cart" 
+  type="button"
+  aria-label="Abrir carrinho"
+  onclick="window.location.href='cart.html'">
+  
+  <span class="cart-icon">🛒</span>
+  <span class="cart-count">0</span>
+</button>
 
 
 <body>
@@ -16,7 +47,11 @@
 
 <header class="gh-header">
   <a class="gh-logo" href="index.html">
-    <span class="logo-icon" aria-hidden="true">🎮</span>
+    <img
+      src="img/logo.png"
+      alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
+      class="gh-logo-img"
+    />
     <span class="logo-text">GeekHaven Shop</span>
   </a>
 
@@ -29,50 +64,46 @@
     </ul>
   </nav>
 
-  <div class="accessibility-controls">
-    <label for="color-mode" class="sr-only">Modo de cor</label>
-    <select id="color-mode" aria-label="Selecionar modo de cor da interface">
-      <option value="default">Padrão</option>
-      <option value="light">Fundo claro</option>
-      <option value="desaturated">Modo dessaturado</option>
-      <option value="colorblind">Modo daltônico</option>
-    </select>
+  <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
+    <span class="accessibility-label">🎨 Tema:</span>
+    <button class="theme-btn" data-theme="default">Padrão</button>
+    <button class="theme-btn" data-theme="light">Claro</button>
+    <button class="theme-btn" data-theme="desaturated">Sem cor</button>
+    <button class="theme-btn" data-theme="colorblind">Daltônico</button>
   </div>
 </header>
 
-  <main class="page-transition reveal">
-    <header class="section-header">
-      <h1>Catálogo GeekHaven</h1>
-      <form class="filters" aria-label="Filtros de produtos">
-        <label for="search">Buscar</label>
-        <input id="search" name="search" type="search" placeholder="Digite o nome do produto" />
-        <label for="category">Categoria</label>
-        <select id="category" name="category">
-          <option value="">Todas</option>
-          <option value="perifericos">Periféricos</option>
-          <option value="colecionaveis">Colecionáveis</option>
-          <option value="cartas">Cartas</option>
-        </select>
-      </form>
-    </header>
-
-    <div class="product-grid">
-      <!-- Reutilizar cards, podem ser links para product.html -->
-      <article class="product-card">
-        <a href="product.html" class="product-link">
-          <img src="https://via.placeholder.com/300x200"
-               alt="Mouse gamer preto com detalhes em roxo neon" />
-          <div class="product-info">
-            <h2>Mouse Gamer PixelStrike</h2>
-            <p class="product-category">Periférico</p>
-            <p class="product-price">R$ 179,90</p>
-          </div>
-        </a>
-      </article>
-
-      <!-- adicionar mais produtos similares -->
+  <main class="page-main page-transition reveal">
+  <section class="section section-narrow" aria-labelledby="catalog-title">
+    <div class="section-header">
+      <h1 id="catalog-title">Catálogo GeekHaven</h1>
     </div>
-  </main class="page-transition reveal">
+
+    <div class="filters">
+      <label for="product-search">Buscar</label>
+  <input
+    id="product-search"
+    type="search"
+    placeholder="Digite o nome do produto"
+    aria-label="Buscar produto pelo nome"
+  />
+
+  <label for="category-filter">Categoria</label>
+  <select id="category-filter" aria-label="Filtrar por categoria">
+    <option value="all">Todas</option>
+    <option value="rpg">RPG &amp; Dados</option>
+    <option value="tcg">TCG &amp; Cartas</option>
+    <option value="minecraft">Minecraft</option>
+    <option value="colecionaveis">Colecionáveis</option>
+    <option value="perifericos">Periféricos &amp; Tech</option>
+    <option value="acessorios">Acessórios</option>
+    <option value="papelaria">Papelaria</option>
+  </select>
+    </div>
+
+    <div id="product-list" class="product-grid"></div>
+  </section>
+</main>
 
   <footer class="gh-footer">
     <p>© 2025 GeekHaven Shop</p>
