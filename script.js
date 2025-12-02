@@ -572,6 +572,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>${p.name}</h3>
             <p class="product-category">${mapCategoryLabel(p.category)}</p>
             <p class="product-price">R$ ${p.price.toFixed(2).replace('.', ',')}</p>
+
+            <a href="product.html?id=${p.id}" class="link-inline">
+              Ver detalhes do produto
+            </a>
+
             <button type="button" class="btn btn-secondary"
                     data-add-to-cart="${p.id}">
               Adicionar ao carrinho
@@ -589,9 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ghAddToCart(btn.dataset.addToCart);
           });
         });
-
-      productList.querySelectorAll('.reveal')
-        .forEach(el => el.classList.add('is-visible'));
     }
 
     function applyFilters() {
@@ -622,6 +624,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyFilters();
   }
+
+    // PÁGINA DE DETALHE DO PRODUTO (product.html)
+  const productDetail = document.querySelector('.product-detail');
+  if (productDetail) {
+    function mapCategoryLabelDetail(cat) {
+      const map = {
+        rpg: "RPG & Dados",
+        tcg: "TCG & Cartas",
+        minecraft: "Minecraft",
+        colecionaveis: "Colecionável",
+        perifericos: "Periférico",
+        acessorios: "Acessório",
+        papelaria: "Papelaria"
+      };
+      return map[cat] || cat;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    const product = PRODUCTS.find(p => p.id === productId);
+
+    const imgEl   = document.getElementById('product-image');
+    const nameEl  = document.getElementById('product-name');
+    const catEl   = document.getElementById('product-category');
+    const priceEl = document.getElementById('product-price');
+    const descEl  = document.getElementById('product-description');
+    const liveRegion = document.getElementById('cart-live-region');
+
+    if (!product) {
+      if (nameEl) nameEl.textContent = 'Produto não encontrado';
+      if (descEl) {
+        descEl.textContent = 'O link acessado não corresponde a um produto válido.';
+      }
+    } else {
+      if (imgEl) {
+        imgEl.src = product.image;
+        imgEl.alt = product.alt;
+      }
+      if (nameEl) nameEl.textContent = product.name;
+      if (catEl) catEl.textContent = mapCategoryLabelDetail(product.category);
+      if (priceEl) {
+        priceEl.textContent = `R$ ${product.price.toFixed(2).replace('.', ',')}`;
+      }
+      if (descEl) {
+        const fallback =
+          product.description ||
+          product.alt ||
+          ('Produto geek da categoria ' + mapCategoryLabelDetail(product.category) + '.');
+        descEl.textContent = fallback;
+      }
+    }
+
+    const btnAdd = document.getElementById('btn-add-cart');
+    const btnBuy = document.getElementById('btn-buy-now');
+
+    if (btnAdd && product) {
+      btnAdd.addEventListener('click', () => {
+        ghAddToCart(product.id);
+      });
+    }
+
+    if (btnBuy && product) {
+      btnBuy.addEventListener('click', () => {
+        ghAddToCart(product.id);
+        if (liveRegion) {
+          liveRegion.textContent =
+            `Fluxo de compra iniciado para ${product.name} (protótipo).`;
+        }
+        alert('Esta é uma simulação de compra para o trabalho de IHC.');
+      });
+    }
+  }
+
 
   // sincroniza carrinho em todas as páginas
   updateCartBadge();

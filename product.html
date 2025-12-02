@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <title>GeekHaven Shop</title>
@@ -28,122 +26,111 @@
   />
 </head>
 
-<div id="cart-live-region" class="sr-only" aria-live="polite"></div>
-
-<button 
-  class="floating-cart" 
-  type="button"
-  aria-label="Abrir carrinho"
-  onclick="window.location.href='cart.html'">
-  
-  <span class="cart-icon">🛒</span>
-  <span class="cart-count">0</span>
-</button>
-
-
 <body>
-
   <header class="gh-header">
-  <a class="gh-logo" href="index.html">
-    <img
-      src="img/logo.png"
-      alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
-      class="gh-logo-img"
-    />
-    <span class="logo-text">GeekHaven Shop</span>
-  </a>
+    <a class="gh-logo" href="index.html">
+      <img
+        src="img/logo.png"
+        alt="Logo GeekHaven Shop com texto pixelado em uma console retro"
+        class="gh-logo-img"
+      />
+      <span class="logo-text">GeekHaven Shop</span>
+    </a>
 
-  <nav class="gh-nav" aria-label="Navegação principal">
-    <ul>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="products.html">Produtos</a></li>
-      <li><a href="cart.html">Carrinho</a></li>
-      <li><a href="about.html">Sobre</a></li>
-    </ul>
-  </nav>
+    <nav class="gh-nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="products.html">Produtos</a></li>
+        <li><a href="cart.html">Carrinho</a></li>
+        <li><a href="about.html">Sobre</a></li>
+      </ul>
+    </nav>
 
-  <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
-    <span class="accessibility-label">🎨 Tema:</span>
-    <button class="theme-btn" data-theme="default">Padrão</button>
-    <button class="theme-btn" data-theme="light">Claro</button>
-    <button class="theme-btn" data-theme="desaturated">Sem cor</button>
-    <button class="theme-btn" data-theme="colorblind">Daltônico</button>
-  </div>
-</header>
+    <div class="accessibility-panel" role="group" aria-label="Opções de tema do site">
+      <span class="accessibility-label">🎨 Tema:</span>
+      <button class="theme-btn" data-theme="default">Padrão</button>
+      <button class="theme-btn" data-theme="light">Claro</button>
+      <button class="theme-btn" data-theme="desaturated">Sem cor</button>
+      <button class="theme-btn" data-theme="colorblind">Daltônico</button>
+    </div>
+  </header>
 
-  <main class="page-transition reveal">
-    <article class="product-detail">
+  <main class="page-main page-transition reveal">
+    <article class="product-detail" aria-labelledby="product-name">
       <div class="product-detail-media">
-        <img src="https://via.placeholder.com/500x350"
-             alt="Teclado mecânico RGB com teclas em destaque roxo e verde neon" />
+        <img
+          id="product-image"
+          src=""
+          alt=""
+        />
       </div>
 
       <div class="product-detail-info">
-        <h1>Teclado Mecânico RGB GeekGlow</h1>
-        <p class="product-price">R$ 399,90</p>
-        <p class="product-description">
-          Teclado mecânico com switches táteis, iluminação RGB com múltiplos efeitos,
-          ideal para longas sessões de games e digitação confortável.
-        </p>
+        <h1 id="product-name"></h1>
+        <p id="product-category" class="product-category"></p>
+        <p id="product-price" class="product-price"></p>
 
-        <form class="add-to-cart" aria-label="Adicionar produto ao carrinho">
-          <label for="quantity">Quantidade</label>
-          <input id="quantity" name="quantity" type="number" min="1" value="1" />
-          <button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
-        </form>
+        <p id="product-description" class="product-description"></p>
+
+        <!-- Opções de envio -->
+        <section class="shipping-options" aria-labelledby="shipping-title">
+          <h2 id="shipping-title">Opções de envio</h2>
+
+          <div class="shipping-option">
+            <input type="radio" id="shipping-retirada" name="shipping" checked>
+            <label for="shipping-retirada">
+              Retirar na loja – <strong>Grátis</strong>
+            </label>
+          </div>
+
+          <div class="shipping-option">
+            <input type="radio" id="shipping-local" name="shipping">
+            <label for="shipping-local">
+              Entrega local (Rivera / Livramento) – <strong>R$ 15,00</strong>
+            </label>
+          </div>
+
+          <p class="helper-text">
+            Valores ilustrativos para o protótipo. O objetivo é mostrar como o
+            usuário escolhe a forma de envio.
+          </p>
+        </section>
+
+        <!-- Ações de compra -->
+        <div class="product-detail-actions" aria-label="Ações de compra">
+          <button type="button" class="btn btn-primary" id="btn-add-cart">
+            Adicionar ao carrinho
+          </button>
+
+          <button type="button" class="btn btn-secondary" id="btn-buy-now">
+            Comprar agora
+          </button>
+        </div>
 
         <p class="helper-text">
-          Dica: confira a quantidade antes de adicionar para evitar erros na compra.
+          Esta é uma simulação para o trabalho de IHC. Os botões mostram o fluxo
+          de navegação, mas não realizam uma compra real.
         </p>
-
-        <div class="product-meta">
-          <p><strong>Categoria:</strong> Periféricos</p>
-          <p><strong>Disponibilidade:</strong> Em estoque</p>
-        </div>
       </div>
     </article>
-
-    <section class="section" aria-labelledby="accessibility-title">
-      <h2 id="accessibility-title">Por que este produto é acessível?</h2>
-      <ul class="bullet-list">
-        <li>Imagem com texto alternativo descritivo.</li>
-        <li>Campos de formulário com rótulos visíveis.</li>
-        <li>Botões com texto claro: “Adicionar ao carrinho”.</li>
-      </ul>
-    </section>
-
-    <section class="section" aria-labelledby="catalog-title">
-    <div class="section-header">
-      <h1 id="catalog-title">Catálogo GeekHaven</h1>
-    </div>
-
-    <div class="filters">
-      <label for="product-search">Buscar</label>
-      <input
-        id="product-search"
-        type="search"
-        placeholder="Digite o nome do produto"
-        aria-label="Buscar produto pelo nome"
-      />
-
-      <label for="category-filter">Categoria</label>
-      <select id="category-filter" aria-label="Filtrar por categoria">
-        <option value="all">Todas</option>
-        <option value="rpg">RPG &amp; Dados</option>
-        <option value="tcg">TCG &amp; Cartas</option>
-        <option value="minecraft">Minecraft</option>
-        <option value="colecionaveis">Colecionáveis</option>
-        <option value="perifericos">Periféricos &amp; Tech</option>
-        <option value="acessorios">Acessórios</option>
-        <option value="papelaria">Papelaria</option>
-      </select>
-    </div>
-
   </main>
 
-    <footer class="gh-footer">...</footer>
-    <div id="cart-live-region" class="sr-only" aria-live="polite"></div>
-   <button class="floating-cart" ...>...</button>
-    <script src="script.js"></script>
-  </body>
+  <!-- Região aria-live + botão flutuante do carrinho -->
+  <div id="cart-live-region" class="sr-only" aria-live="polite"></div>
+
+  <button
+    class="floating-cart"
+    type="button"
+    aria-label="Abrir carrinho de compras"
+    onclick="window.location.href='cart.html'">
+    <span class="cart-icon">🛒</span>
+    <span class="cart-count" aria-hidden="true">0</span>
+  </button>
+
+  <footer class="gh-footer">
+    <p>© 2025 GeekHaven Shop</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
