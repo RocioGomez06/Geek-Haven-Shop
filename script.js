@@ -486,16 +486,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
   const THEMES = ['default', 'light', 'desaturated', 'colorblind'];
 
-  // tema salvo
+  // =========================
+  //  TEMA (MODO DE COR)
+  // =========================
   const savedTheme = localStorage.getItem('gh-color-mode');
   const initialTheme = THEMES.includes(savedTheme) ? savedTheme : 'default';
 
+  // aplica o tema inicial
   THEMES.forEach(theme => {
     root.classList.remove(`theme-${theme}`);
   });
   root.classList.add(`theme-${initialTheme}`);
 
-  // botões de tema
+  // botões de tema no header
   const themeButtons = document.querySelectorAll('.theme-btn');
   if (themeButtons.length > 0) {
     themeButtons.forEach(btn => {
@@ -516,7 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // animações reveal
+  // =========================
+  //  ANIMAÇÕES .reveal
+  // =========================
   const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealElements.length > 0) {
     const observer = new IntersectionObserver(entries => {
@@ -533,7 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  // LISTING DE PRODUTOS (products.html)
+  // =========================
+  //  LISTING DE PRODUTOS (products.html)
+  // =========================
   const productList = document.getElementById('product-list');
   if (productList) {
     const searchInput = document.getElementById('product-search');
@@ -544,9 +551,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rpg: "RPG & Dados",
         tcg: "TCG & Cartas",
         minecraft: "Minecraft",
-        colecionaveis: "Colecionável",
-        perifericos: "Periférico",
-        acessorios: "Acessório",
+        colecionaveis: "Colecionáveis",
+        perifericos: "Periféricos & Tech",
+        acessorios: "Acessórios",
         papelaria: "Papelaria"
       };
       return map[cat] || cat;
@@ -594,13 +601,16 @@ document.addEventListener('DOMContentLoaded', () => {
             ghAddToCart(btn.dataset.addToCart);
           });
         });
+
+      productList.querySelectorAll('.reveal')
+        .forEach(el => el.classList.add('is-visible'));
     }
 
     function applyFilters() {
-      const term = (searchInput?.value || "").toLowerCase().trim();
-      const category = categorySelect?.value || "all";
+      const term = (searchInput ? searchInput.value : "").toLowerCase().trim();
+      const category = categorySelect ? categorySelect.value : "all";
 
-      let filtered = PRODUCTS.slice();
+      let filtered = [...PRODUCTS];
 
       if (category !== "all") {
         filtered = filtered.filter(p => p.category === category);
@@ -625,7 +635,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFilters();
   }
 
-    // PÁGINA DE DETALHE DO PRODUTO (product.html)
+  // =========================
+  //  PÁGINA DE DETALHE (product.html)
+  // =========================
   const productDetail = document.querySelector('.product-detail');
   if (productDetail) {
     function mapCategoryLabelDetail(cat) {
@@ -698,8 +710,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-  // sincroniza carrinho em todas as páginas
+  // =========================
+  //  CARRINHO (todas as páginas)
+  // =========================
   updateCartBadge();
   renderCartPage();
 });

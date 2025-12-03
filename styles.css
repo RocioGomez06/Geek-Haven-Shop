@@ -474,25 +474,27 @@ textarea:focus {
 
 
 /* Tema dessaturado – ajuda quem tem daltonismo diminuindo “poluição” de cores */
-body.theme-desaturated {
+:root.theme-desaturated {
   --bg-color: #050509;        /* quase preto neutro */
   --bg-elevated: #111119;     /* cinza escuro */
   --accent: #9ca3af;          /* cinza forte */
   --accent-soft: #e5e7eb;     /* cinza quase branco */
   --text-main: #f9fafb;       /* texto principal bem claro */
   --text-muted: #9ca3af;      /* texto secundário cinza */
-  --border-subtle: #4b5563;   /* borda cinza média */
+  --border-subtle: #4b5563;
+  --card-bg: #111119;   /* borda cinza média */
 }
 
 /* Tema com fundo claro – para quem tem dificuldade com temas escuros */
-body.theme-light {
+:root.theme-light {
   --bg-color: #e5e7eb;      /* cinza bem clarinho em vez de branco puro */
   --bg-elevated: #ffffff;   /* cartões ainda brancos */
   --accent: #6366f1;        /* roxo/azul mais suave */
   --accent-soft: #16a34a;   /* verde para detalhes, sem exagerar */
   --text-main: #111827;     /* quase preto, ótimo contraste */
   --text-muted: #4b5563;    /* cinza médio para textos secundários */
-  --border-subtle: #d1d5db; /* bordas discretas */
+  --border-subtle: #d1d5db;
+  --card-bg: #ffffff; /* bordas discretas */
 }
 
 /* Em fundo claro, títulos usam texto normal, não a cor de acento */
@@ -568,15 +570,108 @@ body.theme-light .accessibility-controls select {
 
 /* Tema daltônico – paleta pensada para daltonismo vermelho-verde
    usa principalmente ciano, azul e amarelo, com alto contraste */
-body.theme-colorblind {
+:root.theme-colorblind {
   --bg-color: #0b1020;        /* azul bem escuro */
   --bg-elevated: #141927;     /* azul escuro levemente mais claro */
   --accent: #22d3ee;          /* ciano vivo para botões/links */
   --accent-soft: #fbbf24;     /* amarelo forte para detalhes */
   --text-main: #f9fafb;       /* texto principal branco */
   --text-muted: #cbd5f5;      /* azul clarinho para textos secundários */
-  --border-subtle: #1f2937;   /* borda azul escura */
+  --border-subtle: #1f2937;
+  --card-bg: #141927;   /* borda azul escura */
 }
+
+/* Ajustes específicos para elementos en tema claro */
+:root.theme-light .gh-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #d1d5db !important;
+}
+
+:root.theme-light .gh-nav a {
+  color: #111827 !important;
+}
+
+:root.theme-light .gh-nav a.active,
+:root.theme-light .gh-nav a:hover {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+:root.theme-light .product-card {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+:root.theme-light .product-card img {
+  background: #f3f4f6 !important;
+}
+
+:root.theme-light .hero-card {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+}
+
+:root.theme-light .btn-secondary {
+  background-color: #e5e7eb !important;
+  color: #111827 !important;
+}
+
+:root.theme-light .btn-secondary:hover {
+  background-color: #d1d5db !important;
+}
+
+:root.theme-light .btn-primary {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+:root.theme-light input,
+:root.theme-light select,
+:root.theme-light textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+:root.theme-light .cart-table {
+  background-color: #ffffff !important;
+}
+
+:root.theme-light .cart-table th {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+:root.theme-light .product-detail-media {
+  background-color: #f3f4f6 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+:root.theme-light .gh-footer {
+  border-top: 1px solid #d1d5db !important;
+  color: #6b7280 !important;
+}
+
+:root.theme-light .accessibility-panel {
+  background-color: #f9fafb !important;
+  border: 1px solid #d1d5db !important;
+}
+
+:root.theme-light .theme-btn {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+:root.theme-light .theme-btn:hover,
+:root.theme-light .theme-btn.active {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border-color: var(--accent) !important;
+}
+
 
 /* Botões em modo daltônico */
 body.theme-colorblind .btn-primary,
